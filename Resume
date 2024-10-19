@@ -19,7 +19,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            /* Remove text-align: center; */
+            
             margin-bottom: 20px;
         }
         .section {
@@ -32,14 +32,14 @@
         }
         .Name {
             display: flex;
-            flex-direction: column; /* Stack name and image vertically */
-            align-items: center; /* Center horizontally */
+            align-items: center;
+            justify-content: space-between; 
         }
         .Name img {
             width: 200px;
             height: 200px;
             object-fit: cover;
-            margin-top: 10px; /* Add space between name and image */
+            margin-left: 10px; 
         }
         table {
             width: 100%;
