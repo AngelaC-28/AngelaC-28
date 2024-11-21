@@ -1,0 +1,35 @@
+<?php
+session_start();
+include 'db_connect.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$query = "SELECT * FROM item";
+$result = mysqli_query($conn, $query);
+?>
+
+<h1>Available Items</h1>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    <?php while ($item = mysqli_fetch_assoc($result)): ?>
+        <tr>
+            <td><?php echo $item['name']; ?></td>
+            <td><?php echo $item['price']; ?></td>
+            <td>
+                <form method="POST" action="add_to_cart.php">
+                    <input type="hidden" name="item_id" value="<?php echo $item['id']; ?>">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </td>
+        </tr>
+    <?php endwhile; ?>
+</table>
+
+<a href="view_cart.php">View Cart</a>
